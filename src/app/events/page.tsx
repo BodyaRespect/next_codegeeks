@@ -1,32 +1,33 @@
-// src/app/events/page.tsx
+"use client";
 
 import React, { useEffect, useState } from 'react';
-import EventList from '../../components/EventList/EventList';
-import EventFilter from '../../components/EventList/EventFilter';
-import EventSort from '../../components/EventList/EventSort';
 import { getAllEvents } from '../../api/events';
 import { Container, Box } from '@mui/material';
+import { EventFilter } from '../../components/EventFilter/EventFilter';
+import { MapView } from '@/components/MapView/MapView';
+import { EventData } from '@/types/EventData';
 
 const EventListPage: React.FC = () => {
-  const [events, setEvents] = useState([]);
+  const [eventDatas, setEventDatas] = useState<EventData[]>([]);
 
   useEffect(() => {
     const fetchEvents = async () => {
-      "use server";
-
       const data = await getAllEvents();
-      setEvents(data);
+      setEventDatas(data);
     };
     fetchEvents();
+
   }, []);
 
   return (
     <Container>
       <Box mb={2}>
-        <EventFilter />
-        <EventSort />
+        <EventFilter eventDatas={eventDatas} />
       </Box>
-      <EventList events={events} />
+
+      <Box>
+        <MapView eventDatas={eventDatas} />
+      </Box>
     </Container>
   );
 };

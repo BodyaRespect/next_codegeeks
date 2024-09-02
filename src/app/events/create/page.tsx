@@ -1,7 +1,8 @@
-// src/app/events/create/page.tsx
+"use client";
+
 import React from 'react';
-import { useRouter } from 'next/router';
-import EventForm from '../../../components/EventForm/EventForm';
+import { useRouter } from 'next/navigation';
+import { EventForm } from '../../../components/EventForm/EventForm';
 import { createEvent } from '../../../api/events';
 import { Container } from '@mui/material';
 

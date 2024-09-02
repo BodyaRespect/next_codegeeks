@@ -1,24 +1,39 @@
-import React from 'react';
-import EventItem from './EventItem';
-import { EventData } from '../../types/Event';
+import React, { useEffect, useState, useCallback } from 'react';
+import { EventItem } from './EventItem/EventItem';
+import { EventData } from '../../types/EventData';
 import { Container, Grid2 } from '@mui/material';
+import styles from './EventList.module.css';
+import { deleteEvent } from '@/api/events';
 
 interface EventListProps {
-  events: EventData[];
+  eventDatas: EventData[];
 }
 
-const EventList: React.FC<EventListProps> = ({ events }) => {
+export const EventList: React.FC<EventListProps> = ({ eventDatas }) => {
+  const [currentData, setCurrentData] = useState<EventData[]>([]);
+
+  useEffect(() => {
+    setCurrentData(eventDatas);
+  }, [eventDatas]);
+
+  const handleDelete = useCallback(async (id: number) => {
+    try {
+      await deleteEvent(id);
+      setCurrentData(prevEventDatas => prevEventDatas.filter(event => event.id !== id));
+    } catch (error) {
+      console.error('Failed to delete event:', error);
+    }
+  }, []);
+
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" className={styles.eventlist}>
       <Grid2 container spacing={3}>
-        {events.map(event => (
-          <Grid2 size={{ xs: 12, sm: 6, md: 8 }} key={event.id}>
-            <EventItem event={event} />
+        {currentData.map(eventData => (
+          <Grid2 size={{ xs: 12, sm: 6, md: 6 }} key={eventData.id}>
+            <EventItem eventData={eventData} onDelete={handleDelete} />
           </Grid2>
         ))}
       </Grid2>
     </Container>
   );
 };
-
-export default EventList;

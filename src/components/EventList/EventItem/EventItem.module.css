@@ -1,0 +1,50 @@
+.card {
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.cardContent {
+  padding: 16px;
+}
+
+.typographyTitle {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.typographyDate,
+.typographyLocation,
+.typographyDescription {
+  margin-bottom: 4px;
+}
+
+.typographyDescription {
+  min-height: 50px;
+}
+
+.button {
+  flex-grow: 1;
+  margin-top: 16px;
+  max-width: 150px;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.deleteButton {
+  background-color: darkred;
+  color: white;
+}
+
+.deleteButton:hover {
+  background-color: red;
+}

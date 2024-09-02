@@ -1,0 +1,20 @@
+.container {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.textField {
+  box-sizing: border-box;
+}
+
+.formControl {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.nativeSelect {
+  height: 56px;
+  box-sizing: border-box;
+}

@@ -1,9 +1,9 @@
 "use server";
 
 import axios from 'axios';
-import { EventData } from '@/types/Event';
+import { EventData } from '@/types/EventData';
 
-const API_URL = '/api/events';
+const API_URL = 'http://localhost:3000/events';
 
 export const getAllEvents = async () => {
   const response = await axios.get(API_URL);
@@ -32,10 +32,5 @@ export const updateEvent = async (id: number, eventData: EventData) => {
 export const deleteEvent = async (id: number) => {
   const response = await axios.delete(`${API_URL}/${id}`);
 
-  return response.data;
-};
-
-export const getSimilarEvents = async (eventId: number) => {
-  const response = await axios.get(`${API_URL}/similar/${eventId}`);
   return response.data;
 };

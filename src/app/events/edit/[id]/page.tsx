@@ -1,34 +1,30 @@
-// src/app/events/edit/[id]/page.tsx
+"use client";
+
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import EventForm from '../../../../components/EventForm/EventForm';
+import { useParams } from 'next/navigation';
+import { EventForm } from '../../../../components/EventForm/EventForm';
 import { getEventById, updateEvent } from '../../../../api/events';
 import { Container, CircularProgress } from '@mui/material';
 
 const EditEventPage: React.FC = () => {
+  const { id } = useParams();
   const [event, setEvent] = useState(null);
-  const router = useRouter();
-  const { id } = router.query;
+
+  const handleSubmit = async (data: any) => {
+    if (id) {
+      await updateEvent(+id, data);
+    }
+  };
 
   useEffect(() => {
     if (id) {
       const fetchEvent = async () => {
-        "use server";
-
         const data = await getEventById(+id);
         setEvent(data);
       };
       fetchEvent();
     }
   }, [id]);
-
-  const handleSubmit = async (data: any) => {
-    if (id) {
-      await updateEvent(+id, data);
-    }
-
-    router.push('/events');
-  };
 
   return (
     <Container>

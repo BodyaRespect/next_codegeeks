@@ -1,7 +1,8 @@
 export interface EventFormValues {
-  title: string;
+  name: string;
   date: string;
   location: string;
   category: string;
   description: string;
+  price?: number;
 }

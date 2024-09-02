@@ -4,10 +4,10 @@ import { isNotEmpty, isValidDate, isStringLengthValid } from '../../utils/valida
 export const validateEventForm = (values: EventFormValues) => {
   const errors: Partial<Record<keyof EventFormValues, string>> = {};
 
-  if (!isNotEmpty(values.title)) {
-    errors.title = 'Title is required';
-  } else if (!isStringLengthValid(values.title, 3, 100)) {
-    errors.title = 'Title must be between 3 and 100 characters long';
+  if (!isNotEmpty(values.name)) {
+    errors.name = 'Title is required';
+  } else if (!isStringLengthValid(values.name, 3, 100)) {
+    errors.name = 'Title must be between 3 and 100 characters long';
   }
 
   if (!isValidDate(values.date, 'yyyy-MM-dd')) {
