@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Event Management App
+
+The **Event Management App** is a web application designed to manage and interact with events. It provides features for displaying, creating, editing, and deleting events, as well as viewing events on a map. The application aims to offer an intuitive and interactive experience for users to manage and explore various events.
 
 ## Getting Started
 
