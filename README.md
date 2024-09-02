@@ -14,6 +14,7 @@ And after, run the development server:
 
 ```bash
 npm run dev
+```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. If you run your local server application at [http://localhost:3000](http://localhost:3000), the application will automatically run at [http://localhost:3001](http://localhost:3001)
 
